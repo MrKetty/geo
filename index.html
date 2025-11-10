@@ -43,19 +43,23 @@
 
     .controls { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 }
     .tabs { background: transparent; border-radius: 12px; padding: 6px; display: flex; gap: 6px }
-    .tab { padding: 8px 14px; background: rgba(255,255,255,.03); border-radius: 10px; cursor: pointer; font-weight: 600 }
+    .tab { padding: 10px 18px; background: rgba(255,255,255,.07); border-radius: 10px; cursor: pointer; font-weight: 700; transition: all 0.2s }
+    .tab:hover { background: rgba(255,255,255,.15); transform: scale(1.05) }
     .tab.active {
-      background: linear-gradient(90deg, rgba(124,58,237,0.14), rgba(6,182,212,0.06));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+      background: linear-gradient(90deg, rgba(124,58,237,0.4), rgba(6,182,212,0.4));
+      box-shadow: 0 2px 8px rgba(6,182,212,0.4);
     }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin-top: 18px }
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
       border-radius: 14px;
       padding: 12px;
-      border: 1px solid rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,.4);
+      transition: transform 0.2s;
     }
+    .card:hover { transform: translateY(-4px); }
     .card h3 { margin: 0 0 8px; font-size: 16px }
     .preview {
       height: 200px;
@@ -69,8 +73,22 @@
     }
     .preview img { max-width: 100%; max-height: 100%; object-fit: contain; display: block }
     .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px }
-    .btn { background: transparent; border: 1px solid rgba(255,255,255,.06); padding: 8px 10px; border-radius: 10px; cursor: pointer }
-    .btn.primary { background: var(--accent); color: #021226; border: none; box-shadow: 0 6px 18px rgba(6,182,212,.08) }
+    .btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 9px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #e6eef8;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: #021226;
+      box-shadow: 0 0 12px rgba(6,182,212,.4);
+    }
+    .btn.primary { background: var(--accent); color: #021226; border: none; box-shadow: 0 6px 18px rgba(6,182,212,.2) }
     .hint { color: var(--muted); font-size: 13px }
 
     .uploader { margin-top: 8px; display: flex; gap: 8px; align-items: center }
@@ -109,7 +127,7 @@
         <div class="tab" data-continent="africa">Africa</div>
         <div class="tab" data-continent="oceania">Oceania</div>
       </div>
-      <div class="hint">Immagini usate: <strong>usa.jpg</strong>, <strong>messico.jpg</strong> — ciao".</div>
+      <div class="hint">Immagini usate: <strong>usa.jpg</strong>, <strong>messico.jpg</strong>, <strong>brasile.jpg</strong>, <strong>asia.jpg</strong></div>
     </div>
 
     <main>
@@ -132,7 +150,7 @@
           </article>
 
           <!-- Messico -->
-          <article class="card" data-country="mexico">
+          <article class="card" data-country="messico">
             <h3>Messico</h3>
             <div class="preview" id="preview-messico">
               <img src="messico.jpg" alt="Mappa Messico" id="img-messico">
@@ -147,12 +165,45 @@
             </div>
           </article>
 
+          <!-- Brasile -->
+          <article class="card" data-country="brasile">
+            <h3>Brasile</h3>
+            <div class="preview" id="preview-brasile">
+              <img src="brasile.jpg" alt="Mappa Brasile" id="img-brasile">
+            </div>
+            <div class="meta">
+              <div class="hint">brasile.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-brasile">Apri</button>
+                <label class="upload-label btn" for="file-brasile">Sostituisci</label>
+                <input id="file-brasile" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <!-- Altri continenti -->
+      <!-- Asia -->
+      <section id="asia" class="continent" style="display:none">
+        <div class="grid">
+          <article class="card" data-country="asia">
+            <h3>Asia</h3>
+            <div class="preview" id="preview-asia">
+              <img src="asia.jpg" alt="Mappa Asia" id="img-asia">
+            </div>
+            <div class="meta">
+              <div class="hint">asia.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-asia">Apri</button>
+                <label class="upload-label btn" for="file-asia">Sostituisci</label>
+                <input id="file-asia" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section id="europa" class="continent" style="display:none"><div class="card"><h3>Europa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
-      <section id="asia" class="continent" style="display:none"><div class="card"><h3>Asia</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
       <section id="africa" class="continent" style="display:none"><div class="card"><h3>Africa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
       <section id="oceania" class="continent" style="display:none"><div class="card"><h3>Oceania</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
     </main>
@@ -191,6 +242,8 @@
     }
     setupFileInput('file-usa','img-usa');
     setupFileInput('file-messico','img-messico');
+    setupFileInput('file-brasile','img-brasile');
+    setupFileInput('file-asia','img-asia');
 
     // Modale
     document.querySelectorAll('button[data-action="view"]').forEach(b => b.addEventListener('click', e => {
@@ -222,6 +275,8 @@
     }
     enableDrop('preview-usa','img-usa','file-usa');
     enableDrop('preview-messico','img-messico','file-messico');
+    enableDrop('preview-brasile','img-brasile','file-brasile');
+    enableDrop('preview-asia','img-asia','file-asia');
   </script>
 </body>
 </html>
