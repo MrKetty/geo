@@ -1,312 +1,318 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cartine — Mappa per continenti</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f1724;
-      --card: #0b1220;
-      --muted: #98a0b3;
-      --accent: linear-gradient(135deg, #7c3aed, #06b6d4);
-    }
-    * { box-sizing: border-box }
-    body {
-      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
-      margin: 0;
-      background: radial-gradient(1200px 400px at 10% 10%, rgba(124,58,237,.08), transparent), var(--bg);
-      color: #e6eef8;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 1100px; margin: 36px auto; padding: 28px }
-    header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px }
-    .logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 20px rgba(2,6,23,.6);
-      overflow: hidden;
-    }
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-    h1 { font-size: 20px; margin: 0 }
-    p.lead { margin: 4px 0 0; color: var(--muted) }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cartine — Mappa per continenti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #98a0b3;
+      --accent: linear-gradient(135deg, #7c3aed, #06b6d4);
+    }
+    * { box-sizing: border-box }
+    body {
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+      margin: 0;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(124,58,237,.08), transparent), var(--bg);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1100px; margin: 36px auto; padding: 28px }
+    header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px }
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(2,6,23,.6);
+      overflow: hidden;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    h1 { font-size: 20px; margin: 0 }
+    p.lead { margin: 4px 0 0; color: var(--muted) }
 
-    .controls { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 }
-    .tabs { background: transparent; border-radius: 12px; padding: 6px; display: flex; gap: 6px }
-    .tab { padding: 10px 18px; background: rgba(255,255,255,.07); border-radius: 10px; cursor: pointer; font-weight: 700; transition: all 0.2s }
-    .tab:hover { background: rgba(255,255,255,.15); transform: scale(1.05) }
-    .tab.active {
-      background: linear-gradient(90deg, rgba(124,58,237,0.4), rgba(6,182,212,0.4));
-      box-shadow: 0 2px 8px rgba(6,182,212,0.4);
-    }
+    .controls { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 }
+    .tabs { background: transparent; border-radius: 12px; padding: 6px; display: flex; gap: 6px }
+    .tab { padding: 10px 18px; background: rgba(255,255,255,.07); border-radius: 10px; cursor: pointer; font-weight: 700; transition: all 0.2s }
+    .tab:hover { background: rgba(255,255,255,.15); transform: scale(1.05) }
+    .tab.active {
+      background: linear-gradient(90deg, rgba(124,58,237,0.4), rgba(6,182,212,0.4));
+      box-shadow: 0 2px 8px rgba(6,182,212,0.4);
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin-top: 18px }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border-radius: 14px;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,.4);
-      transition: transform 0.2s;
-    }
-    .card:hover { transform: translateY(-4px); }
-    .card h3 { margin: 0 0 8px; font-size: 16px }
-    .preview {
-      height: 200px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: linear-gradient(180deg,#071026,#071126);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .preview img { max-width: 100%; max-height: 100%; object-fit: contain; display: block }
-    .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px }
-    .btn {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,.1);
-      padding: 9px 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #e6eef8;
-      transition: all 0.2s;
-    }
-    .btn:hover {
-      background: var(--accent);
-      color: #021226;
-      box-shadow: 0 0 12px rgba(6,182,212,.4);
-    }
-    .btn.primary { background: var(--accent); color: #021226; border: none; box-shadow: 0 6px 18px rgba(6,182,212,.2) }
-    .hint { color: var(--muted); font-size: 13px }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin-top: 18px }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,.4);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card h3 { margin: 0 0 8px; font-size: 16px }
+    .preview {
+      height: 200px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(180deg,#071026,#071126);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .preview img { max-width: 100%; max-height: 100%; object-fit: contain; display: block }
+    .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px }
+    .btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 9px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #e6eef8;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: #021226;
+      box-shadow: 0 0 12px rgba(6,182,212,.4);
+    }
+    .btn.primary { background: var(--accent); color: #021226; border: none; box-shadow: 0 6px 18px rgba(6,182,212,.2) }
+    .hint { color: var(--muted); font-size: 13px }
 
-    .uploader { margin-top: 8px; display: flex; gap: 8px; align-items: center }
-    input[type=file] { display: none }
-    .upload-label { padding: 8px 10px; border-radius: 10px; border: 1px dashed rgba(255,255,255,.04); cursor: pointer }
+    .uploader { margin-top: 8px; display: flex; gap: 8px; align-items: center }
+    input[type=file] { display: none }
+    .upload-label { padding: 8px 10px; border-radius: 10px; border: 1px dashed rgba(255,255,255,.04); cursor: pointer }
 
-    .modal {
-      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
-      background: linear-gradient(180deg,rgba(2,6,23,.6),rgba(2,6,23,.9)); z-index: 60;
-    }
-    .modal.open { display: flex }
-    .modal-content { width: 90%; max-width: 1200px; border-radius: 12px; overflow: hidden }
-    .modal-content img { width: 100%; height: 80vh; object-fit: contain; background: #000 }
+    .modal {
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+      background: linear-gradient(180deg,rgba(2,6,23,.6),rgba(2,6,23,.9)); z-index: 60;
+    }
+    .modal.open { display: flex }
+    .modal-content { width: 90%; max-width: 1200px; border-radius: 12px; overflow: hidden }
+    .modal-content img { width: 100%; height: 80vh; object-fit: contain; background: #000 }
 
-    footer { margin-top: 28px; color: var(--muted); font-size: 13px }
-    @media (max-width:520px){.preview{height:160px}}
-  </style>
+    footer { margin-top: 28px; color: var(--muted); font-size: 13px }
+    @media (max-width:520px){.preview{height:160px}}
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">
-        <img src="logo.png" alt="Logo">
-      </div>
-      <div>
-        <h1>Cartine — Organizza le mappe per continente</h1>
-        <p class="lead">Trascina o sostituisci le immagini per ogni stato. Da Davide❤️.</p>
-      </div>
-    </header>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+      </div>
+      <div>
+        <h1>Cartine — Organizza le mappe per continente</h1>
+        <p class="lead">Trascina o sostituisci le immagini per ogni stato. Da Davide❤️.</p>
+      </div>
+    </header>
 
-    <div class="controls">
-      <div class="tabs" role="tablist">
-        <div class="tab active" data-continent="americhe">America</div>
-        <div class="tab" data-continent="europa">Europa</div>
-        <div class="tab" data-continent="asia">Asia</div>
-        <div class="tab" data-continent="africa">Africa</div>
-        <div class="tab" data-continent="oceania">Oceania</div>
-      </div>
-      <div class="hint">Immagini usate: <strong>usa.jpg</strong>, <strong>messico.jpg</strong>, <strong>brasile.jpg</strong>, <strong>asia.jpg</strong>, <strong>turchia.jpg</strong>, <strong>asia-so.jpg</strong></div>
-    </div>
+    <div class="controls">
+      <div class="tabs" role="tablist">
+        <div class="tab active" data-continent="americhe">America</div>
+        <div class="tab" data-continent="europa">Europa</div>
+        <div class="tab" data-continent="asia">Asia</div>
+        <div class="tab" data-continent="africa">Africa</div>
+        <div class="tab" data-continent="oceania">Oceania</div>
+      </div>
+      <div class="hint">Immagini usate: <strong>usa.jpg</strong>, <strong>messico.jpg</strong>, <strong>brasile.jpg</strong>, <strong>asia.jpg</strong>, <strong>turchia.jpg</strong>, <strong>asia-so.jpg</strong></div>
+    </div>
 
-    <main>
-      <section id="americhe" class="continent">
-        <div class="grid">
-                    <article class="card" data-country="usa">
-            <h3>Stati Uniti — USA</h3>
-            <div class="preview" id="preview-usa">
-              <img src="usa.jpg" alt="Mappa Stati Uniti" id="img-usa">
-            </div>
-            <div class="meta">
-              <div class="hint">usa.jpg — dimensione consigliata 1600×1000</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-usa">Apri</button>
-                <label class="upload-label btn" for="file-usa">Sostituisci</label>
-                <input id="file-usa" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
+    <main>
+      <section id="americhe" class="continent">
+        <div class="grid">
+          <!-- USA -->
+          <article class="card" data-country="usa">
+            <h3>Stati Uniti — USA</h3>
+            <div class="preview" id="preview-usa">
+              <img src="usa.jpg" alt="Mappa Stati Uniti" id="img-usa">
+            </div>
+            <div class="meta">
+              <div class="hint">usa.jpg — dimensione consigliata 1600×1000</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-usa">Apri</button>
+                <label class="upload-label btn" for="file-usa">Sostituisci</label>
+                <input id="file-usa" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
 
-                    <article class="card" data-country="messico">
-            <h3>Messico</h3>
-            <div class="preview" id="preview-messico">
-              <img src="messico.jpg" alt="Mappa Messico" id="img-messico">
-            </div>
-            <div class="meta">
-              <div class="hint">messico.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-messico">Apri</button>
-                <label class="upload-label btn" for="file-messico">Sostituisci</label>
-                <input id="file-messico" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
+          <!-- Messico -->
+          <article class="card" data-country="messico">
+            <h3>Messico</h3>
+            <div class="preview" id="preview-messico">
+              <img src="messico.jpg" alt="Mappa Messico" id="img-messico">
+            </div>
+            <div class="meta">
+              <div class="hint">messico.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-messico">Apri</button>
+                <label class="upload-label btn" for="file-messico">Sostituisci</label>
+                <input id="file-messico" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
 
-                    <article class="card" data-country="brasile">
-            <h3>Brasile</h3>
-            <div class="preview" id="preview-brasile">
-              <img src="brasile.jpg" alt="Mappa Brasile" id="img-brasile">
-            </div>
-            <div class="meta">
-              <div class="hint">brasile.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-brasile">Apri</button>
-                <label class="upload-label btn" for="file-brasile">Sostituisci</label>
-          _       <input id="file-brasile" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+          <!-- Brasile -->
+          <article class="card" data-country="brasile">
+            <h3>Brasile</h3>
+            <div class="preview" id="preview-brasile">
+              <img src="brasile.jpg" alt="Mappa Brasile" id="img-brasile">
+            </div>
+            <div class="meta">
+              <div class="hint">brasile.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-brasile">Apri</button>
+                <label class="upload-label btn" for="file-brasile">Sostituisci</label>
+                <input id="file-brasile" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-            <section id="asia" class="continent" style="display:none">
-        <div class="grid">
-          <article class="card" data-country="asia">
-            <h3>Asia</h3>
-            <div class="preview" id="preview-asia">
-              <img src="asia.jpg" alt="Mappa Asia" id="img-asia">
-            </div>
-            <div class="meta">
-              <div class="hint">asia.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-asia">Apri</button>
-                <label class="upload-label btn" for="file-asia">Sostituisci</label>
-                <input id="file-asia" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
+      <!-- Asia -->
+      <section id="asia" class="continent" style="display:none">
+        <div class="grid">
+          <article class="card" data-country="asia">
+            <h3>Asia</h3>
+            <div class="preview" id="preview-asia">
+              <img src="asia.jpg" alt="Mappa Asia" id="img-asia">
+            </div>
+            <div class="meta">
+              <div class="hint">asia.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-asia">Apri</button>
+                <label class="upload-label btn" for="file-asia">Sostituisci</label>
+                <input id="file-asia" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
 
-                    <article class="card" data-country="turchia">
-            <h3>Turchia</h3>
-            <div class="preview" id="preview-turchia">
-              <img src="turchia.jpg" alt="Mappa Turchia" id="img-turchia">
-            </div>
-            <div class="meta">
-              <div class="hint">turchia.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-turchia">Apri</button>
-                <label class="upload-label btn" for="file-turchia">Sostituisci</label>
-                <input id="file-turchia" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
+          <!-- Turchia -->
+          <article class="card" data-country="turchia">
+            <h3>Turchia</h3>
+            <div class="preview" id="preview-turchia">
+              <img src="turchia.jpg" alt="Mappa Turchia" id="img-turchia">
+            </div>
+            <div class="meta">
+              <div class="hint">turchia.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-turchia">Apri</button>
+                <label class="upload-label btn" for="file-turchia">Sostituisci</label>
+                <input id="file-turchia" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
 
-                    <article class="card" data-country="asia-so">
-            <h3>Asia Sud-occidentale</h3>
-            <div class="preview" id="preview-asia-so">
-      _       <img src="asia-so.jpg" alt="Mappa Asia Sud-occidentale" id="img-asia-so">
-            </div>
-      _     <div class="meta">
-              <div class="hint">asia-so.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-asia-so">Apri</button>
-                <label class="upload-label btn" for="file-asia-so">Sostituisci</label>
-                <input id="file-asia-so" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+          <!-- Asia Sud-occidentale -->
+          <article class="card" data-country="asia-so">
+            <h3>Asia Sud-occidentale</h3>
+            <div class="preview" id="preview-asia-so">
+              <img src="asia-so.jpg" alt="Mappa Asia Sud-occidentale" id="img-asia-so">
+            </div>
+            <div class="meta">
+              <div class="hint">asia-so.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-asia-so">Apri</button>
+                <label class="upload-label btn" for="file-asia-so">Sostituisci</label>
+                <input id="file-asia-so" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      <section id="europa" class="continent" style="display:none"><div class="card"><h3>Europa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
-      <section id="africa" class="continent" style="display:none"><div class="card"><h3>Africa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
-      <section id="oceania" class="continent" style="display:none"><div class="card"><h3>Oceania</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
-    </main>
+      <section id="europa" class="continent" style="display:none"><div class="card"><h3>Europa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
+      <section id="africa" class="continent" style="display:none"><div class="card"><h3>Africa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
+      <section id="oceania" class="continent" style="display:none"><div class="card"><h3>Oceania</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
+    </main>
 
-    <div class="modal" id="modal">
-      <div class="modal-content">
-        <img src="" alt="Agrandimento" id="modal-img">
-      </div>
-    </div>
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <img src="" alt="Agrandimento" id="modal-img">
+      </div>
+    </div>
 
-    <footer>
-      Puoi cambiare le immagini usando i pulsanti "Sostituisci" per caricarle temporaneamente.
-    </footer>
-  </div>
+    <footer>
+      Puoi cambiare le immagini usando i pulsanti "Sostituisci" per caricarle temporaneamente.
+    </footer>
+  </div>
 
-_   <script>
-    // Cambio tab
-    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', e => {
-      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      const c = e.currentTarget.dataset.continent;
-      document.querySelectorAll('.continent').forEach(sec => sec.style.display = sec.id === c ? '' : 'none');
-    }));
+  <script>
+    // Cambio tab
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', e => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      const c = e.currentTarget.dataset.continent;
+      document.querySelectorAll('.continent').forEach(sec => sec.style.display = sec.id === c ? '' : 'none');
+    }));
 
-    // Upload immagini
-    function setupFileInput(fileId, imgId) {
-      const file = document.getElementById(fileId);
-      const img = document.getElementById(imgId);
-      file.addEventListener('change', ev => {
-        const f = ev.target.files[0];
-        if (!f) return;
-        const url = URL.createObjectURL(f);
-        img.src = url;
-        img.dataset.uploaded = 'true';
-      });
-    }
-    setupFileInput('file-usa','img-usa');
-    setupFileInput('file-messico','img-messico');
-    setupFileInput('file-brasile','img-brasile');
-    setupFileInput('file-asia','img-asia');
-    setupFileInput('file-turchia','img-turchia');
-    setupFileInput('file-asia-so','img-asia-so');
+    // Upload immagini
+    function setupFileInput(fileId, imgId) {
+      const file = document.getElementById(fileId);
+      const img = document.getElementById(imgId);
+      file.addEventListener('change', ev => {
+        const f = ev.target.files[0];
+        if (!f) return;
+        const url = URL.createObjectURL(f);
+        img.src = url;
+        img.dataset.uploaded = 'true';
+      });
+    }
+    setupFileInput('file-usa','img-usa');
+    setupFileInput('file-messico','img-messico');
+    setupFileInput('file-brasile','img-brasile');
+    setupFileInput('file-asia','img-asia');
+    setupFileInput('file-turchia','img-turchia');
+    setupFileInput('file-asia-so','img-asia-so');
 
-    // Modale
-    document.querySelectorAll('button[data-action="view"]').forEach(b => b.addEventListener('click', e => {
-      const target = document.getElementById(e.currentTarget.dataset.target);
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-img');
-      modalImg.src = target.src;
-      modal.classList.add('open');
-    }));
-    document.getElementById('modal').addEventListener('click', () => {
-      document.getElementById('modal').classList.remove('open');
-      document.getElementById('modal-img').src = '';
-    });
+    // Modale
+    document.querySelectorAll('button[data-action="view"]').forEach(b => b.addEventListener('click', e => {
+      const target = document.getElementById(e.currentTarget.dataset.target);
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = target.src;
+      modal.classList.add('open');
+    }));
+    document.getElementById('modal').addEventListener('click', () => {
+      document.getElementById('modal').classList.remove('open');
+      document.getElementById('modal-img').src = '';
+    });
 
-    // Drag & drop
-    function enableDrop(previewId, imgId, fileInputId) {
-      const preview = document.getElementById(previewId);
-      const input = document.getElementById(fileInputId);
-      preview.addEventListener('dragover', e => { e.preventDefault(); preview.style.opacity = 0.85 });
-      preview.addEventListener('dragleave', e => { preview.style.opacity = 1 });
-      preview.addEventListener('drop', e => {
-        e.preventDefault(); preview.style.opacity = 1;
-        const f = e.dataTransfer.files[0];
-        if (!f) return;
-        input.files = e.dataTransfer.files;
-        const ev = new Event('change');
-        input.dispatchEvent(ev);
-      });
-    }
-    enableDrop('preview-usa','img-usa','file-usa');
-    enableDrop('preview-messico','img-messico','file-messico');
-    enableDrop('preview-brasile','img-brasile','file-brasile');
-    enableDrop('preview-asia','img-asia','file-asia');
-    enableDrop('preview-turchia','img-turchia','file-turchia');
-    enableDrop('preview-asia-so','img-asia-so','file-asia-so');
-  </script>
+    // Drag & drop
+    function enableDrop(previewId, imgId, fileInputId) {
+      const preview = document.getElementById(previewId);
+      const input = document.getElementById(fileInputId);
+      preview.addEventListener('dragover', e => { e.preventDefault(); preview.style.opacity = 0.85 });
+      preview.addEventListener('dragleave', e => { preview.style.opacity = 1 });
+      preview.addEventListener('drop', e => {
+        e.preventDefault(); preview.style.opacity = 1;
+        const f = e.dataTransfer.files[0];
+        if (!f) return;
+        input.files = e.dataTransfer.files;
+        const ev = new Event('change');
+        input.dispatchEvent(ev);
+      });
+    }
+    enableDrop('preview-usa','img-usa','file-usa');
+    enableDrop('preview-messico','img-messico','file-messico');
+    enableDrop('preview-brasile','img-brasile','file-brasile');
+    enableDrop('preview-asia','img-asia','file-asia');
+    enableDrop('preview-turchia','img-turchia','file-turchia');
+    enableDrop('preview-asia-so','img-asia-so','file-asia-so');
+  </script>
 </body>
 </html>
