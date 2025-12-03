@@ -91,7 +91,6 @@
     .btn.primary { background: var(--accent); color: #021226; border: none; box-shadow: 0 6px 18px rgba(6,182,212,.2) }
     .hint { color: var(--muted); font-size: 13px }
 
-    .uploader { margin-top: 8px; display: flex; gap: 8px; align-items: center }
     input[type=file] { display: none }
     .upload-label { padding: 8px 10px; border-radius: 10px; border: 1px dashed rgba(255,255,255,.04); cursor: pointer }
 
@@ -120,27 +119,27 @@
     </header>
 
     <div class="controls">
-      <div class="tabs" role="tablist">
+      <div class="tabs">
         <div class="tab active" data-continent="americhe">America</div>
         <div class="tab" data-continent="europa">Europa</div>
         <div class="tab" data-continent="asia">Asia</div>
         <div class="tab" data-continent="africa">Africa</div>
         <div class="tab" data-continent="oceania">Oceania</div>
       </div>
-      <div class="hint">Immagini usate: <strong>usa.jpg</strong>, <strong>messico.jpg</strong>, <strong>brasile.jpg</strong>, <strong>asia.jpg</strong>, <strong>turchia.jpg</strong>, <strong>asia-so.jpg</strong></div>
+      <div class="hint">Immagini usate: usa.jpg, messico.jpg, brasile.jpg, asia.jpg, turchia.jpg, asia-so.jpg, is_pal.jpg, arabia.jpg</div>
     </div>
 
     <main>
+      <!-- AMERICHE -->
       <section id="americhe" class="continent">
         <div class="grid">
-          <!-- USA -->
           <article class="card" data-country="usa">
             <h3>Stati Uniti — USA</h3>
             <div class="preview" id="preview-usa">
-              <img src="usa.jpg" alt="Mappa Stati Uniti" id="img-usa">
+              <img src="usa.jpg" id="img-usa">
             </div>
             <div class="meta">
-              <div class="hint">usa.jpg — dimensione consigliata 1600×1000</div>
+              <div class="hint">usa.jpg</div>
               <div>
                 <button class="btn" data-action="view" data-target="img-usa">Apri</button>
                 <label class="upload-label btn" for="file-usa">Sostituisci</label>
@@ -149,11 +148,10 @@
             </div>
           </article>
 
-          <!-- Messico -->
           <article class="card" data-country="messico">
             <h3>Messico</h3>
             <div class="preview" id="preview-messico">
-              <img src="messico.jpg" alt="Mappa Messico" id="img-messico">
+              <img src="messico.jpg" id="img-messico">
             </div>
             <div class="meta">
               <div class="hint">messico.jpg</div>
@@ -165,11 +163,10 @@
             </div>
           </article>
 
-          <!-- Brasile -->
           <article class="card" data-country="brasile">
             <h3>Brasile</h3>
             <div class="preview" id="preview-brasile">
-              <img src="brasile.jpg" alt="Mappa Brasile" id="img-brasile">
+              <img src="brasile.jpg" id="img-brasile">
             </div>
             <div class="meta">
               <div class="hint">brasile.jpg</div>
@@ -183,13 +180,14 @@
         </div>
       </section>
 
-      <!-- Asia -->
+      <!-- ASIA -->
       <section id="asia" class="continent" style="display:none">
         <div class="grid">
-          <article class="card" data-country="asia">
+
+          <article class="card">
             <h3>Asia</h3>
             <div class="preview" id="preview-asia">
-              <img src="asia.jpg" alt="Mappa Asia" id="img-asia">
+              <img src="asia.jpg" id="img-asia">
             </div>
             <div class="meta">
               <div class="hint">asia.jpg</div>
@@ -201,11 +199,10 @@
             </div>
           </article>
 
-          <!-- Turchia -->
-          <article class="card" data-country="turchia">
+          <article class="card">
             <h3>Turchia</h3>
             <div class="preview" id="preview-turchia">
-              <img src="turchia.jpg" alt="Mappa Turchia" id="img-turchia">
+              <img src="turchia.jpg" id="img-turchia">
             </div>
             <div class="meta">
               <div class="hint">turchia.jpg</div>
@@ -217,11 +214,10 @@
             </div>
           </article>
 
-          <!-- Asia Sud-occidentale -->
-          <article class="card" data-country="asia-so">
+          <article class="card">
             <h3>Asia Sud-occidentale</h3>
             <div class="preview" id="preview-asia-so">
-              <img src="asia-so.jpg" alt="Mappa Asia Sud-occidentale" id="img-asia-so">
+              <img src="asia-so.jpg" id="img-asia-so">
             </div>
             <div class="meta">
               <div class="hint">asia-so.jpg</div>
@@ -232,27 +228,64 @@
               </div>
             </div>
           </article>
+
+          <!-- 🇮🇱🇵🇸 ISRAELE E PALESTINA -->
+          <article class="card">
+            <h3>Israele e Palestina</h3>
+            <div class="preview" id="preview-is-pal">
+              <img src="is_pal.jpg" id="img-is-pal">
+            </div>
+            <div class="meta">
+              <div class="hint">is_pal.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-is-pal">Apri</button>
+                <label class="upload-label btn" for="file-is-pal">Sostituisci</label>
+                <input id="file-is-pal" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
+
+          <!-- 🇸🇦 ARABIA SAUDITA -->
+          <article class="card">
+            <h3>Arabia Saudita</h3>
+            <div class="preview" id="preview-arabia">
+              <img src="arabia.jpg" id="img-arabia">
+            </div>
+            <div class="meta">
+              <div class="hint">arabia.jpg</div>
+              <div>
+                <button class="btn" data-action="view" data-target="img-arabia">Apri</button>
+                <label class="upload-label btn" for="file-arabia">Sostituisci</label>
+                <input id="file-arabia" type="file" accept="image/*">
+              </div>
+            </div>
+          </article>
+
         </div>
       </section>
 
-      <section id="europa" class="continent" style="display:none"><div class="card"><h3>Europa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
-      <section id="africa" class="continent" style="display:none"><div class="card"><h3>Africa</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
-      <section id="oceania" class="continent" style="display:none"><div class="card"><h3>Oceania</h3><p class="hint">Nessuna mappa ancora.</p></div></section>
+      <section id="europa" class="continent" style="display:none">
+        <div class="card"><h3>Europa</h3><p class="hint">Nessuna mappa ancora.</p></div>
+      </section>
+      <section id="africa" class="continent" style="display:none">
+        <div class="card"><h3>Africa</h3><p class="hint">Nessuna mappa ancora.</p></div>
+      </section>
+      <section id="oceania" class="continent" style="display:none">
+        <div class="card"><h3>Oceania</h3><p class="hint">Nessuna mappa ancora.</p></div>
+      </section>
     </main>
 
     <div class="modal" id="modal">
       <div class="modal-content">
-        <img src="" alt="Agrandimento" id="modal-img">
+        <img src="" id="modal-img">
       </div>
     </div>
 
-    <footer>
-      Puoi cambiare le immagini usando i pulsanti "Sostituisci" per caricarle temporaneamente.
-    </footer>
+    <footer>Puoi cambiare le immagini usando "Sostituisci".</footer>
   </div>
 
   <script>
-    // Cambio tab
+    // Tabs
     document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', e => {
       document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
       e.currentTarget.classList.add('active');
@@ -260,59 +293,36 @@
       document.querySelectorAll('.continent').forEach(sec => sec.style.display = sec.id === c ? '' : 'none');
     }));
 
-    // Upload immagini
+    // Upload function
     function setupFileInput(fileId, imgId) {
       const file = document.getElementById(fileId);
       const img = document.getElementById(imgId);
       file.addEventListener('change', ev => {
         const f = ev.target.files[0];
         if (!f) return;
-        const url = URL.createObjectURL(f);
-        img.src = url;
-        img.dataset.uploaded = 'true';
+        img.src = URL.createObjectURL(f);
       });
     }
+
+    // Init all inputs
     setupFileInput('file-usa','img-usa');
     setupFileInput('file-messico','img-messico');
     setupFileInput('file-brasile','img-brasile');
     setupFileInput('file-asia','img-asia');
     setupFileInput('file-turchia','img-turchia');
     setupFileInput('file-asia-so','img-asia-so');
+    setupFileInput('file-is-pal','img-is-pal');
+    setupFileInput('file-arabia','img-arabia');
 
-    // Modale
+    // Modal
     document.querySelectorAll('button[data-action="view"]').forEach(b => b.addEventListener('click', e => {
       const target = document.getElementById(e.currentTarget.dataset.target);
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-img');
-      modalImg.src = target.src;
-      modal.classList.add('open');
+      document.getElementById('modal-img').src = target.src;
+      document.getElementById('modal').classList.add('open');
     }));
     document.getElementById('modal').addEventListener('click', () => {
       document.getElementById('modal').classList.remove('open');
-      document.getElementById('modal-img').src = '';
     });
-
-    // Drag & drop
-    function enableDrop(previewId, imgId, fileInputId) {
-      const preview = document.getElementById(previewId);
-      const input = document.getElementById(fileInputId);
-      preview.addEventListener('dragover', e => { e.preventDefault(); preview.style.opacity = 0.85 });
-      preview.addEventListener('dragleave', e => { preview.style.opacity = 1 });
-      preview.addEventListener('drop', e => {
-        e.preventDefault(); preview.style.opacity = 1;
-        const f = e.dataTransfer.files[0];
-        if (!f) return;
-        input.files = e.dataTransfer.files;
-        const ev = new Event('change');
-        input.dispatchEvent(ev);
-      });
-    }
-    enableDrop('preview-usa','img-usa','file-usa');
-    enableDrop('preview-messico','img-messico','file-messico');
-    enableDrop('preview-brasile','img-brasile','file-brasile');
-    enableDrop('preview-asia','img-asia','file-asia');
-    enableDrop('preview-turchia','img-turchia','file-turchia');
-    enableDrop('preview-asia-so','img-asia-so','file-asia-so');
   </script>
 </body>
 </html>
