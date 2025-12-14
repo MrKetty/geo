@@ -18,311 +18,202 @@
       margin: 0;
       background: radial-gradient(1200px 400px at 10% 10%, rgba(124,58,237,.08), transparent), var(--bg);
       color: #e6eef8;
-      -webkit-font-smoothing: antialiased;
     }
     .wrap { max-width: 1100px; margin: 36px auto; padding: 28px }
     header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px }
+
     .logo {
       width: 64px;
       height: 64px;
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 20px rgba(2,6,23,.6);
       overflow: hidden;
     }
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-    }
+    .logo img { width: 100%; height: 100%; object-fit: contain }
+
     h1 { font-size: 20px; margin: 0 }
     p.lead { margin: 4px 0 0; color: var(--muted) }
 
-    .controls { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 }
-    .tabs { background: transparent; border-radius: 12px; padding: 6px; display: flex; gap: 6px }
-    .tab { padding: 10px 18px; background: rgba(255,255,255,.07); border-radius: 10px; cursor: pointer; font-weight: 700; transition: all 0.2s }
-    .tab:hover { background: rgba(255,255,255,.15); transform: scale(1.05) }
+    .tabs { display: flex; gap: 6px; margin: 18px 0 }
+    .tab {
+      padding: 10px 18px;
+      background: rgba(255,255,255,.07);
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
     .tab.active {
-      background: linear-gradient(90deg, rgba(124,58,237,0.4), rgba(6,182,212,0.4));
-      box-shadow: 0 2px 8px rgba(6,182,212,0.4);
+      background: linear-gradient(90deg, rgba(124,58,237,.4), rgba(6,182,212,.4));
     }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; margin-top: 18px }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 16px;
+    }
+
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      background: rgba(255,255,255,.03);
       border-radius: 14px;
       padding: 12px;
       border: 1px solid rgba(255,255,255,.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,.4);
-      transition: transform 0.2s;
     }
-    .card:hover { transform: translateY(-4px); }
-    .card h3 { margin: 0 0 8px; font-size: 16px }
+
     .preview {
       height: 200px;
       border-radius: 10px;
       overflow: hidden;
-      background: linear-gradient(180deg,#071026,#071126);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      background: #000;
     }
-    .preview img { max-width: 100%; max-height: 100%; object-fit: contain; display: block }
-    .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px }
+    .preview img { max-width: 100%; max-height: 100%; object-fit: contain }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
     .btn {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,.1);
-      padding: 9px 14px;
-      border-radius: 10px;
+      background: rgba(255,255,255,.1);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: 600;
       color: #e6eef8;
-      transition: all 0.2s;
+      font-weight: 600;
     }
-    .btn:hover {
-      background: var(--accent);
-      color: #021226;
-      box-shadow: 0 0 12px rgba(6,182,212,.4);
-    }
-    .btn.primary { background: var(--accent); color: #021226; border: none; box-shadow: 0 6px 18px rgba(6,182,212,.2) }
-    .hint { color: var(--muted); font-size: 13px }
 
     input[type=file] { display: none }
-    .upload-label { padding: 8px 10px; border-radius: 10px; border: 1px dashed rgba(255,255,255,.04); cursor: pointer }
 
     .modal {
-      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
-      background: linear-gradient(180deg,rgba(2,6,23,.6),rgba(2,6,23,.9)); z-index: 60;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
     }
     .modal.open { display: flex }
-    .modal-content { width: 90%; max-width: 1200px; border-radius: 12px; overflow: hidden }
-    .modal-content img { width: 100%; height: 80vh; object-fit: contain; background: #000 }
-
-    footer { margin-top: 28px; color: var(--muted); font-size: 13px }
-    @media (max-width:520px){.preview{height:160px}}
+    .modal img { max-width: 90%; max-height: 90% }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">
-        <img src="logo.png" alt="Logo">
-      </div>
-      <div>
-        <h1>Cartine — Organizza le mappe per continente</h1>
-        <p class="lead">Trascina o sostituisci le immagini per ogni stato. Da Davide❤️.</p>
-      </div>
-    </header>
-
-    <div class="controls">
-      <div class="tabs">
-        <div class="tab active" data-continent="americhe">America</div>
-        <div class="tab" data-continent="europa">Europa</div>
-        <div class="tab" data-continent="asia">Asia</div>
-        <div class="tab" data-continent="africa">Africa</div>
-        <div class="tab" data-continent="oceania">Oceania</div>
-      </div>
-      <div class="hint">Immagini usate: usa.jpg, messico.jpg, brasile.jpg, asia.jpg, turchia.jpg, asia-so.jpg, is_pal.jpg, arabia.jpg</div>
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <img src="logo.png">
     </div>
-
-    <main>
-      <!-- AMERICHE -->
-      <section id="americhe" class="continent">
-        <div class="grid">
-          <article class="card" data-country="usa">
-            <h3>Stati Uniti — USA</h3>
-            <div class="preview" id="preview-usa">
-              <img src="usa.jpg" id="img-usa">
-            </div>
-            <div class="meta">
-              <div class="hint">usa.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-usa">Apri</button>
-                <label class="upload-label btn" for="file-usa">Sostituisci</label>
-                <input id="file-usa" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-          <article class="card" data-country="messico">
-            <h3>Messico</h3>
-            <div class="preview" id="preview-messico">
-              <img src="messico.jpg" id="img-messico">
-            </div>
-            <div class="meta">
-              <div class="hint">messico.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-messico">Apri</button>
-                <label class="upload-label btn" for="file-messico">Sostituisci</label>
-                <input id="file-messico" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-          <article class="card" data-country="brasile">
-            <h3>Brasile</h3>
-            <div class="preview" id="preview-brasile">
-              <img src="brasile.jpg" id="img-brasile">
-            </div>
-            <div class="meta">
-              <div class="hint">brasile.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-brasile">Apri</button>
-                <label class="upload-label btn" for="file-brasile">Sostituisci</label>
-                <input id="file-brasile" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ASIA -->
-      <section id="asia" class="continent" style="display:none">
-        <div class="grid">
-
-          <article class="card">
-            <h3>Asia</h3>
-            <div class="preview" id="preview-asia">
-              <img src="asia.jpg" id="img-asia">
-            </div>
-            <div class="meta">
-              <div class="hint">asia.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-asia">Apri</button>
-                <label class="upload-label btn" for="file-asia">Sostituisci</label>
-                <input id="file-asia" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Turchia</h3>
-            <div class="preview" id="preview-turchia">
-              <img src="turchia.jpg" id="img-turchia">
-            </div>
-            <div class="meta">
-              <div class="hint">turchia.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-turchia">Apri</button>
-                <label class="upload-label btn" for="file-turchia">Sostituisci</label>
-                <input id="file-turchia" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Asia Sud-occidentale</h3>
-            <div class="preview" id="preview-asia-so">
-              <img src="asia-so.jpg" id="img-asia-so">
-            </div>
-            <div class="meta">
-              <div class="hint">asia-so.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-asia-so">Apri</button>
-                <label class="upload-label btn" for="file-asia-so">Sostituisci</label>
-                <input id="file-asia-so" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-          <!-- 🇮🇱🇵🇸 ISRAELE E PALESTINA -->
-          <article class="card">
-            <h3>Israele e Palestina</h3>
-            <div class="preview" id="preview-is-pal">
-              <img src="is_pal.jpg" id="img-is-pal">
-            </div>
-            <div class="meta">
-              <div class="hint">is_pal.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-is-pal">Apri</button>
-                <label class="upload-label btn" for="file-is-pal">Sostituisci</label>
-                <input id="file-is-pal" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-          <!-- 🇸🇦 ARABIA SAUDITA -->
-          <article class="card">
-            <h3>Arabia Saudita</h3>
-            <div class="preview" id="preview-arabia">
-              <img src="arabia.jpg" id="img-arabia">
-            </div>
-            <div class="meta">
-              <div class="hint">arabia.jpg</div>
-              <div>
-                <button class="btn" data-action="view" data-target="img-arabia">Apri</button>
-                <label class="upload-label btn" for="file-arabia">Sostituisci</label>
-                <input id="file-arabia" type="file" accept="image/*">
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-      <section id="europa" class="continent" style="display:none">
-        <div class="card"><h3>Europa</h3><p class="hint">Nessuna mappa ancora.</p></div>
-      </section>
-      <section id="africa" class="continent" style="display:none">
-        <div class="card"><h3>Africa</h3><p class="hint">Nessuna mappa ancora.</p></div>
-      </section>
-      <section id="oceania" class="continent" style="display:none">
-        <div class="card"><h3>Oceania</h3><p class="hint">Nessuna mappa ancora.</p></div>
-      </section>
-    </main>
-
-    <div class="modal" id="modal">
-      <div class="modal-content">
-        <img src="" id="modal-img">
-      </div>
+    <div>
+      <h1>Cartine — Organizza le mappe</h1>
+      <p class="lead">By Davide ❤️</p>
     </div>
+  </header>
 
-    <footer>Puoi cambiare le immagini usando "Sostituisci".</footer>
+  <div class="tabs">
+    <div class="tab active" data-c="americhe">America</div>
+    <div class="tab" data-c="asia">Asia</div>
+    <div class="tab" data-c="europa">Europa</div>
+    <div class="tab" data-c="africa">Africa</div>
+    <div class="tab" data-c="oceania">Oceania</div>
   </div>
 
-  <script>
-    // Tabs
-    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', e => {
+  <!-- AMERICHE -->
+  <section id="americhe" class="continent">
+    <div class="grid">
+      <div class="card">
+        <h3>USA</h3>
+        <div class="preview"><img src="usa.jpg" id="img-usa"></div>
+      </div>
+      <div class="card">
+        <h3>Messico</h3>
+        <div class="preview"><img src="messico.jpg"></div>
+      </div>
+      <div class="card">
+        <h3>Brasile</h3>
+        <div class="preview"><img src="brasile.jpg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASIA -->
+  <section id="asia" class="continent" style="display:none">
+    <div class="grid">
+
+      <div class="card">
+        <h3>Asia</h3>
+        <div class="preview"><img src="asia.jpg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Asia Sud-occidentale</h3>
+        <div class="preview"><img src="asia-so.jpg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Asia caucasica e centrale</h3>
+        <div class="preview"><img src="asia-ce.jpg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Afghanistan</h3>
+        <div class="preview"><img src="ag.jpg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Turchia</h3>
+        <div class="preview"><img src="turchia.jpg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Arabia Saudita</h3>
+        <div class="preview"><img src="arabia.jpg"></div>
+      </div>
+
+      <div class="card">
+        <h3>Israele e Palestina</h3>
+        <div class="preview"><img src="is_pal.jpg"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="europa" class="continent" style="display:none">
+    <p>Europa — da aggiungere</p>
+  </section>
+  <section id="africa" class="continent" style="display:none">
+    <p>Africa — da aggiungere</p>
+  </section>
+  <section id="oceania" class="continent" style="display:none">
+    <p>Oceania — da aggiungere</p>
+  </section>
+</div>
+
+<div class="modal" id="modal"><img id="modal-img"></div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(t => {
+    t.onclick = () => {
       document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      const c = e.currentTarget.dataset.continent;
-      document.querySelectorAll('.continent').forEach(sec => sec.style.display = sec.id === c ? '' : 'none');
-    }));
-
-    // Upload function
-    function setupFileInput(fileId, imgId) {
-      const file = document.getElementById(fileId);
-      const img = document.getElementById(imgId);
-      file.addEventListener('change', ev => {
-        const f = ev.target.files[0];
-        if (!f) return;
-        img.src = URL.createObjectURL(f);
-      });
+      t.classList.add('active');
+      document.querySelectorAll('.continent').forEach(c => c.style.display = 'none');
+      document.getElementById(t.dataset.c).style.display = '';
     }
+  });
 
-    // Init all inputs
-    setupFileInput('file-usa','img-usa');
-    setupFileInput('file-messico','img-messico');
-    setupFileInput('file-brasile','img-brasile');
-    setupFileInput('file-asia','img-asia');
-    setupFileInput('file-turchia','img-turchia');
-    setupFileInput('file-asia-so','img-asia-so');
-    setupFileInput('file-is-pal','img-is-pal');
-    setupFileInput('file-arabia','img-arabia');
-
-    // Modal
-    document.querySelectorAll('button[data-action="view"]').forEach(b => b.addEventListener('click', e => {
-      const target = document.getElementById(e.currentTarget.dataset.target);
-      document.getElementById('modal-img').src = target.src;
+  document.querySelectorAll('.preview img').forEach(img => {
+    img.onclick = () => {
+      document.getElementById('modal-img').src = img.src;
       document.getElementById('modal').classList.add('open');
-    }));
-    document.getElementById('modal').addEventListener('click', () => {
-      document.getElementById('modal').classList.remove('open');
-    });
-  </script>
+    }
+  });
+
+  document.getElementById('modal').onclick = () => {
+    document.getElementById('modal').classList.remove('open');
+  }
+</script>
 </body>
 </html>
