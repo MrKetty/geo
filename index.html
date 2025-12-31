@@ -4,23 +4,36 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cartine — Mappa per continenti</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0f1724;
-      --card: #0b1220;
       --muted: #98a0b3;
-      --accent: linear-gradient(135deg, #7c3aed, #06b6d4);
     }
+
     * { box-sizing: border-box }
+
     body {
-      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
       margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
       background: radial-gradient(1200px 400px at 10% 10%, rgba(124,58,237,.08), transparent), var(--bg);
       color: #e6eef8;
     }
-    .wrap { max-width: 1100px; margin: 36px auto; padding: 28px }
-    header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 28px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
 
     .logo {
       width: 64px;
@@ -28,12 +41,22 @@
       border-radius: 12px;
       overflow: hidden;
     }
-    .logo img { width: 100%; height: 100%; object-fit: contain }
 
-    h1 { font-size: 20px; margin: 0 }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    h1 { margin: 0; font-size: 20px }
     p.lead { margin: 4px 0 0; color: var(--muted) }
 
-    .tabs { display: flex; gap: 6px; margin: 18px 0 }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin: 18px 0;
+    }
+
     .tab {
       padding: 10px 18px;
       background: rgba(255,255,255,.07);
@@ -41,6 +64,7 @@
       cursor: pointer;
       font-weight: 700;
     }
+
     .tab.active {
       background: linear-gradient(90deg, rgba(124,58,237,.4), rgba(6,182,212,.4));
     }
@@ -61,47 +85,43 @@
     .preview {
       height: 200px;
       border-radius: 10px;
-      overflow: hidden;
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #000;
-    }
-    .preview img { max-width: 100%; max-height: 100%; object-fit: contain }
-
-    .meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .btn {
-      background: rgba(255,255,255,.1);
-      border: none;
-      padding: 8px 12px;
-      border-radius: 8px;
+      overflow: hidden;
       cursor: pointer;
-      color: #e6eef8;
-      font-weight: 600;
     }
 
-    input[type=file] { display: none }
+    .preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.8);
+      background: rgba(0,0,0,.85);
       display: none;
       align-items: center;
       justify-content: center;
+      z-index: 10;
     }
-    .modal.open { display: flex }
-    .modal img { max-width: 90%; max-height: 90% }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+    }
   </style>
 </head>
 
 <body>
+
 <div class="wrap">
   <header>
     <div class="logo">
@@ -121,105 +141,75 @@
     <div class="tab" data-c="oceania">Oceania</div>
   </div>
 
-  <!-- AMERICHE -->
+  <!-- AMERICA -->
   <section id="americhe" class="continent">
     <div class="grid">
-      <div class="card">
-        <h3>USA</h3>
-        <div class="preview"><img src="usa.jpg" id="img-usa"></div>
-      </div>
-      <div class="card">
-        <h3>Messico</h3>
-        <div class="preview"><img src="messico.jpg"></div>
-      </div>
-      <div class="card">
-        <h3>Brasile</h3>
-        <div class="preview"><img src="brasile.jpg"></div>
-      </div>
+      <div class="card"><h3>USA</h3><div class="preview"><img src="usa.jpg"></div></div>
+      <div class="card"><h3>Messico</h3><div class="preview"><img src="messico.jpg"></div></div>
+      <div class="card"><h3>Brasile</h3><div class="preview"><img src="brasile.jpg"></div></div>
     </div>
   </section>
 
   <!-- ASIA -->
   <section id="asia" class="continent" style="display:none">
     <div class="grid">
+      <div class="card"><h3>Asia</h3><div class="preview"><img src="asia.jpg"></div></div>
+      <div class="card"><h3>Asia Sud-occidentale</h3><div class="preview"><img src="asia-so.jpg"></div></div>
+      <div class="card"><h3>Asia caucasica e centrale</h3><div class="preview"><img src="asia-ce.jpg"></div></div>
+      <div class="card"><h3>Afghanistan</h3><div class="preview"><img src="af.jpg"></div></div>
+      <div class="card"><h3>Turchia</h3><div class="preview"><img src="turchia.jpg"></div></div>
+      <div class="card"><h3>Arabia Saudita</h3><div class="preview"><img src="arabia.jpg"></div></div>
+      <div class="card"><h3>Israele e Palestina</h3><div class="preview"><img src="is_pal.jpg"></div></div>
 
-      <div class="card">
-        <h3>Asia</h3>
-        <div class="preview"><img src="asia.jpg"></div>
-      </div>
-
-      <div class="card">
-        <h3>Asia Sud-occidentale</h3>
-        <div class="preview"><img src="asia-so.jpg"></div>
-      </div>
-
-      <div class="card">
-        <h3>Asia caucasica e centrale</h3>
-        <div class="preview"><img src="asia-ce.jpg"></div>
-      </div>
-
-      <div class="card">
-        <h3>Afghanistan</h3>
-        <div class="preview"><img src="af.jpg"></div>
-      </div>
-
-      <div class="card">
-        <h3>Turchia</h3>
-        <div class="preview"><img src="turchia.jpg"></div>
-      </div>
-      
+      <!-- INDIA -->
       <div class="card">
         <h3>India</h3>
-      <div class="preview"><img src="india.jpeg">
-  </div>
-</div>
-
-      <div class="card">
-        <h3>Arabia Saudita</h3>
-        <div class="preview"><img src="arabia.jpg"></div>
+        <div class="preview">
+          <img src="india.jpeg">
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Israele e Palestina</h3>
-        <div class="preview"><img src="is_pal.jpg"></div>
-      </div>
-
     </div>
   </section>
 
   <section id="europa" class="continent" style="display:none">
     <p>Europa — da aggiungere</p>
   </section>
+
   <section id="africa" class="continent" style="display:none">
     <p>Africa — da aggiungere</p>
   </section>
+
   <section id="oceania" class="continent" style="display:none">
     <p>Oceania — da aggiungere</p>
   </section>
 </div>
 
-<div class="modal" id="modal"><img id="modal-img"></div>
+<div class="modal" id="modal">
+  <img id="modal-img">
+</div>
 
 <script>
-  document.querySelectorAll('.tab').forEach(t => {
-    t.onclick = () => {
-      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.onclick = () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
       document.querySelectorAll('.continent').forEach(c => c.style.display = 'none');
-      document.getElementById(t.dataset.c).style.display = '';
-    }
+      document.getElementById(tab.dataset.c).style.display = '';
+    };
   });
 
   document.querySelectorAll('.preview img').forEach(img => {
     img.onclick = () => {
       document.getElementById('modal-img').src = img.src;
       document.getElementById('modal').classList.add('open');
-    }
+    };
   });
 
   document.getElementById('modal').onclick = () => {
     document.getElementById('modal').classList.remove('open');
-  }
+  };
 </script>
+
 </body>
 </html>
+
