@@ -159,7 +159,6 @@
   <!-- ASIA -->
   <section id="asia" class="continent" style="display:none">
     <div class="grid">
-
       <div class="card"><h3>Asia</h3><div class="preview"><img src="asia.jpg"></div></div>
       <div class="card"><h3>Asia Sud-occidentale</h3><div class="preview"><img src="asia-so.jpg"></div></div>
       <div class="card"><h3>Asia caucasica e centrale</h3><div class="preview"><img src="asia-ce.jpg"></div></div>
@@ -167,17 +166,12 @@
       <div class="card"><h3>Turchia</h3><div class="preview"><img src="turchia.jpg"></div></div>
       <div class="card"><h3>Arabia Saudita</h3><div class="preview"><img src="arabia.jpg"></div></div>
       <div class="card"><h3>Israele e Palestina</h3><div class="preview"><img src="is_pal.jpg"></div></div>
-
       <div class="card"><h3>India</h3><div class="preview"><img src="india.jpeg"></div></div>
       <div class="card"><h3>Cina</h3><div class="preview"><img src="cina.jpeg"></div></div>
-
-      <!-- AGGIUNTI -->
       <div class="card"><h3>Giappone</h3><div class="preview"><img src="giappone.png"></div></div>
       <div class="card"><h3>Corea</h3><div class="preview"><img src="corea.png"></div></div>
-
       <div class="card"><h3>Estremo Oriente Asiatico</h3><div class="preview"><img src="estremo.jpeg"></div></div>
       <div class="card"><h3>Sud-Est Asiatico</h3><div class="preview"><img src="sud-est.jpeg"></div></div>
-
     </div>
   </section>
 
@@ -188,7 +182,14 @@
 
   <!-- AFRICA -->
   <section id="africa" class="continent" style="display:none">
-    <p>Africa — da aggiungere</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Africa</h3>
+        <div class="preview">
+          <img src="africa.png">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- OCEANIA -->
@@ -211,12 +212,16 @@
     };
   });
 
-  document.querySelectorAll('.preview img').forEach(img => {
-    img.onclick = () => {
-      document.getElementById('modal-img').src = img.src;
-      document.getElementById('modal').classList.add('open');
-    };
-  });
+  function bindImageClicks() {
+    document.querySelectorAll('.preview img').forEach(img => {
+      img.onclick = () => {
+        document.getElementById('modal-img').src = img.src;
+        document.getElementById('modal').classList.add('open');
+      };
+    });
+  }
+
+  bindImageClicks();
 
   document.getElementById('modal').onclick = () => {
     document.getElementById('modal').classList.remove('open');
