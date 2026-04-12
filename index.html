@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cartine — Mappa per continenti</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Cartine — Mappa per continenti
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --bg: #0f1724;
       --muted: #98a0b3;
     }
@@ -124,102 +124,248 @@
       max-height: 90%;
     }
   </style>
-</head>
-
-<body>
-
-<div class="wrap">
-  <header>
+ </head>
+ <body>
+  <div class="wrap">
+   <header>
     <div class="logo">
-      <img src="logo.png">
+     <img src="logo.png"/>
     </div>
     <div>
-      <h1>Cartine — Organizza le mappe</h1>
-      <p class="lead">By Davide ❤️</p>
+     <h1>
+      Cartine — Organizza le mappe
+     </h1>
+     <p class="lead">
+      By Davide ❤️
+     </p>
     </div>
-  </header>
-
-  <div class="tabs">
-    <div class="tab active" data-c="americhe">America</div>
-    <div class="tab" data-c="asia">Asia</div>
-    <div class="tab" data-c="europa">Europa</div>
-    <div class="tab" data-c="africa">Africa</div>
-    <div class="tab" data-c="oceania">Oceania</div>
+   </header>
+   <div class="tabs">
+    <div class="tab active" data-c="americhe">
+     America
+    </div>
+    <div class="tab" data-c="asia">
+     Asia
+    </div>
+    <div class="tab" data-c="europa">
+     Europa
+    </div>
+    <div class="tab" data-c="africa">
+     Africa
+    </div>
+    <div class="tab" data-c="oceania">
+     Oceania
+    </div>
+   </div>
+   <!-- AMERICA -->
+   <section class="continent" id="americhe">
+    <div class="grid">
+     <div class="card">
+      <h3>
+       USA
+      </h3>
+      <div class="preview">
+       <img src="usa.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Messico
+      </h3>
+      <div class="preview">
+       <img src="messico.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Brasile
+      </h3>
+      <div class="preview">
+       <img src="brasile.jpg"/>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- ASIA -->
+   <section class="continent" id="asia" style="display:none">
+    <div class="grid">
+     <div class="card">
+      <h3>
+       Asia
+      </h3>
+      <div class="preview">
+       <img src="asia.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Asia Sud-occidentale
+      </h3>
+      <div class="preview">
+       <img src="asia-so.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Asia caucasica e centrale
+      </h3>
+      <div class="preview">
+       <img src="asia-ce.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Afghanistan
+      </h3>
+      <div class="preview">
+       <img src="af.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Turchia
+      </h3>
+      <div class="preview">
+       <img src="turchia.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Arabia Saudita
+      </h3>
+      <div class="preview">
+       <img src="arabia.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Israele e Palestina
+      </h3>
+      <div class="preview">
+       <img src="is_pal.jpg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       India
+      </h3>
+      <div class="preview">
+       <img src="india.jpeg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Cina
+      </h3>
+      <div class="preview">
+       <img src="cina.jpeg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Giappone
+      </h3>
+      <div class="preview">
+       <img src="giappone.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Corea
+      </h3>
+      <div class="preview">
+       <img src="corea.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Estremo Oriente Asiatico
+      </h3>
+      <div class="preview">
+       <img src="estremo.jpeg"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Sud-Est Asiatico
+      </h3>
+      <div class="preview">
+       <img src="sud-est.jpeg"/>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- EUROPA -->
+   <section class="continent" id="europa" style="display:none">
+    <p>
+     Europa — da aggiungere
+    </p>
+   </section>
+   <!-- AFRICA -->
+   <section class="continent" id="africa" style="display:none">
+    <div class="grid">
+     <div class="card">
+      <h3>
+       Africa
+      </h3>
+      <div class="preview">
+       <img src="africa.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Africa Settentrionale
+      </h3>
+      <div class="preview">
+       <img src="nafrica.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Egitto
+      </h3>
+      <div class="preview">
+       <img src="egitto.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Libia
+      </h3>
+      <div class="preview">
+       <img src="libia.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Marocco
+      </h3>
+      <div class="preview">
+       <img src="marocco.png"/>
+      </div>
+     </div>
+     <div class="card">
+      <h3>
+       Africa centrale
+      </h3>
+      <div class="preview">
+       <img src="cafrica.png"/>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- OCEANIA -->
+   <section class="continent" id="oceania" style="display:none">
+    <p>
+     Oceania — da aggiungere
+    </p>
+   </section>
   </div>
-
-  <!-- AMERICA -->
-  <section id="americhe" class="continent">
-    <div class="grid">
-      <div class="card"><h3>USA</h3><div class="preview"><img src="usa.jpg"></div></div>
-      <div class="card"><h3>Messico</h3><div class="preview"><img src="messico.jpg"></div></div>
-      <div class="card"><h3>Brasile</h3><div class="preview"><img src="brasile.jpg"></div></div>
-    </div>
-  </section>
-
-  <!-- ASIA -->
-  <section id="asia" class="continent" style="display:none">
-    <div class="grid">
-      <div class="card"><h3>Asia</h3><div class="preview"><img src="asia.jpg"></div></div>
-      <div class="card"><h3>Asia Sud-occidentale</h3><div class="preview"><img src="asia-so.jpg"></div></div>
-      <div class="card"><h3>Asia caucasica e centrale</h3><div class="preview"><img src="asia-ce.jpg"></div></div>
-      <div class="card"><h3>Afghanistan</h3><div class="preview"><img src="af.jpg"></div></div>
-      <div class="card"><h3>Turchia</h3><div class="preview"><img src="turchia.jpg"></div></div>
-      <div class="card"><h3>Arabia Saudita</h3><div class="preview"><img src="arabia.jpg"></div></div>
-      <div class="card"><h3>Israele e Palestina</h3><div class="preview"><img src="is_pal.jpg"></div></div>
-      <div class="card"><h3>India</h3><div class="preview"><img src="india.jpeg"></div></div>
-      <div class="card"><h3>Cina</h3><div class="preview"><img src="cina.jpeg"></div></div>
-      <div class="card"><h3>Giappone</h3><div class="preview"><img src="giappone.png"></div></div>
-      <div class="card"><h3>Corea</h3><div class="preview"><img src="corea.png"></div></div>
-      <div class="card"><h3>Estremo Oriente Asiatico</h3><div class="preview"><img src="estremo.jpeg"></div></div>
-      <div class="card"><h3>Sud-Est Asiatico</h3><div class="preview"><img src="sud-est.jpeg"></div></div>
-    </div>
-  </section>
-
-  <!-- EUROPA -->
-  <section id="europa" class="continent" style="display:none">
-    <p>Europa — da aggiungere</p>
-  </section>
-
-  <!-- AFRICA -->
-  <section id="africa" class="continent" style="display:none">
-    <div class="grid">
-
-      <div class="card">
-        <h3>Africa</h3>
-        <div class="preview">
-          <img src="africa.png">
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Africa Settentrionale</h3>
-        <div class="preview">
-          <img src="nafrica.png">
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Egitto</h3>
-        <div class="preview">
-          <img src="egitto.png">
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- OCEANIA -->
-  <section id="oceania" class="continent" style="display:none">
-    <p>Oceania — da aggiungere</p>
-  </section>
-</div>
-
-<div class="modal" id="modal">
-  <img id="modal-img">
-</div>
-
-<script>
-  document.querySelectorAll('.tab').forEach(tab => {
+  <div class="modal" id="modal">
+   <img id="modal-img"/>
+  </div>
+  <script>
+   document.querySelectorAll('.tab').forEach(tab => {
     tab.onclick = () => {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
@@ -242,7 +388,6 @@
   document.getElementById('modal').onclick = () => {
     document.getElementById('modal').classList.remove('open');
   };
-</script>
-
-</body>
+  </script>
+ </body>
 </html>
